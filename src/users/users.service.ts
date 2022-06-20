@@ -22,6 +22,10 @@ export class UsersService {
     return this.userModel.findById({ _id: id }).lean();
   }
 
+  findByUserName(username: string) {
+    return this.userModel.findOne({ username }).lean();
+  }
+
   update(id: string, updateUserDto: UpdateUserDto) {
     return this.userModel
       .findOneAndUpdate({ _id: id }, { $set: updateUserDto }, { new: true })

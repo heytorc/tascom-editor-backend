@@ -1,8 +1,10 @@
-export class CreateUserDto {
-  name: string;
+export class AuthUserDto {
   username: string;
+  _id: any;
+  __v?: any;
+  id?: any;
+  name: string;
   email: string;
-  password: string;
   system_id: string;
   companies: string[];
   active: boolean;
