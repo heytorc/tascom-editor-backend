@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { DocumentsModule } from './documents/documents.module';
 import { SystemsModule } from './systems/systems.module';
 import { CompaniesModule } from './companies/companies.module';
+import { RecordsModule } from './records/records.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CompaniesModule } from './companies/companies.module';
     DocumentsModule,
     SystemsModule,
     CompaniesModule,
+    RecordsModule,
   ],
   controllers: [],
   providers: [],

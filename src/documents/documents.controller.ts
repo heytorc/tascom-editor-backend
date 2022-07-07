@@ -21,6 +21,16 @@ export class DocumentsController {
 
   @Post()
   create(@Body() createDocumentDto: CreateDocumentDto) {
+    if (createDocumentDto.versions.length === 0) {
+      createDocumentDto.versions.push({
+        number: 1,
+        status: 'building',
+        fields: [],
+        created_at: new Date(),
+        updated_at: new Date(),
+      });
+    }
+
     return this.documentsService.create(createDocumentDto);
   }
 

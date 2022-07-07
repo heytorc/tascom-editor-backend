@@ -31,10 +31,7 @@ export class DocumentsService {
   }
 
   findOne(id: string) {
-    return this.documentModel
-      .findById({ _id: id })
-      .populate(['system_id', 'company_id'])
-      .lean();
+    return this.documentModel.findById({ _id: id }).lean();
   }
 
   update(id: string, updateDocumentDto: UpdateDocumentDto) {

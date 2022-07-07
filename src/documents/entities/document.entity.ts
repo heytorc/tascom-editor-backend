@@ -53,7 +53,10 @@ const DocumentSizeSchema = raw({
   height: { type: Number },
 });
 
-@Schema({ timestamps: true })
+@Schema({
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+  collection: 'documents',
+})
 export class EditorDocument {
   @Prop({ required: true })
   name: string;

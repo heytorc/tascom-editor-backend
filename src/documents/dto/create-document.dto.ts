@@ -7,5 +7,5 @@ export class CreateDocumentDto {
     width: number;
     height: number;
   };
-  versions: [];
+  versions: any[];
 }

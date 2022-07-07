@@ -14,12 +14,13 @@ export class AuthService {
     username: string,
     pass: string,
   ): Promise<AuthUserDto | undefined> {
-    console.log('JWT_SECRET', process.env.JWT_SECRET);
     const user = await this.usersService.findByUserName(username);
+
     if (user && user.password === pass) {
       const { password, ...result } = user;
       return result;
     }
+
     return undefined;
   }
 

@@ -6,7 +6,7 @@ import { Company } from '../../companies/entities/company.entity';
 
 export type SystemDocument = System & Document;
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } })
 export class System {
   @Prop({ required: true, unique: true })
   name: string;
