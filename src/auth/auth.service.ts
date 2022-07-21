@@ -31,4 +31,12 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
   }
+
+  async validateToken(token: string) {
+    try {
+      return this.jwtService.verify(token);
+    } catch (error) {
+      return false;
+    }
+  }
 }
