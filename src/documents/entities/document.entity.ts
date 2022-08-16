@@ -36,16 +36,16 @@ const FieldSchema = raw({
 
 const VersionsSchema = raw({
   number: Number,
-  created_at: Date,
-  updated_at: Date,
-  fields: [FieldSchema],
+  created_at: { type: Date, default: new Date() },
+  updated_at: { type: Date, default: new Date() },
+  fields: { type: mongoose.Schema.Types.Array },
   status: {
     type: String,
     enum: ['published', 'building', 'canceled'],
     default: 'building',
   },
   publised_at: Date,
-  active: Boolean,
+  active: { type: Boolean, default: true },
 });
 
 const DocumentSizeSchema = raw({
@@ -58,7 +58,7 @@ const DocumentSizeSchema = raw({
   collection: 'documents',
 })
 export class EditorDocument {
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   name: string;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'System', required: true })
@@ -77,7 +77,7 @@ export class EditorDocument {
   @Prop(DocumentSizeSchema)
   size: Record<string, any>;
 
-  @Prop(VersionsSchema)
+  @Prop([VersionsSchema])
   versions: Record<string, any>;
 
   @Prop({ default: true })
